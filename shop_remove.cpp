@@ -1,28 +1,32 @@
 #include "shop_struct.h"
 
-void rremove(cosmetic * mass, int size, char name[80]){
+void rremove(cosmetic * mass, int size, int argc, char* argv[]){
 
-	printf("\n>Enter product: ");
-	char type[80], color[80];
+	cout<<" >Enter product: "<<endl;
+	string type, color;
 	int price, place;
-	printf("\nType: ");
+	cout<<"Type: "<<endl;
 	scanf("%s", type);
-	printf("Color: ");
+	cout<<"Color: "<<endl;
 	scanf("%s", color);
-	printf("Price: ");
+	cout<<"Price: "<<endl;
 	scanf("%d", &price);
-	printf("Place: ");
+	cout<<"Place: "<<endl;
 	scanf("%d", &place);
 	int i;
-	FILE * f;
-	if (( f = fopen( name, "rb"))== NULL){
-		printf("  Cannot open file.\n");
-		exit(1);
+	
+	ifstream f(argv[1]);
+	if (f.is_open())
+		cout<<"OK"<<endl;
+	else{
+		cout<<"Cannot open file."<<endl;
+		return 1;
 	}
+	
 	while(!feof(f))
 		for(i = size-1; i >= 0; i--)
 			fread(&mass[i], sizeof(cosmetic), 1, f);
-	fclose(f);
+	f.close();
 
 	int rm_i, k = 0;
 	for(i = size-1; i >= 0; i--){
@@ -32,18 +36,21 @@ void rremove(cosmetic * mass, int size, char name[80]){
 		}
 	}
 	if(k != 0){
-		FILE * newf;
-		if (( newf = fopen( name, "w+b"))== NULL){
-			printf("  Canot open file.\n");
-			exit(1);
+		ofstream f(argv[1]);
+		if (f.is_open())
+			cout<<"OK"<<endl;
+		else{
+			cout<<"Cannot open file."<<endl;
+			return 1;
 		}
+		
 		for(i = size-1; i >=0; i--){
 			if (i != rm_i)
 				fwrite(&mass[i], sizeof(cosmetic), 1, newf);
-		}
-		fclose(newf);
+			}
+		f.close();
 		size--;
-	printf("\n  Product removed.\n");
+		cout<<" Product removed."<<endl;
 	}else
-		printf("\n  Product not found.\n");
+		cout<<" Product not found."<<endl;
 }
