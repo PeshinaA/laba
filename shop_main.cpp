@@ -11,7 +11,8 @@ int main(int argc, char* argv[]){
 	else{
 		cout<<"Cannot open file."<<endl;
 		return 1;
-
+	}
+	
 	cosmetic temp;
 	while(!feof(f)){
 		fread(&temp, sizeof(cosmetic), 1, f);
