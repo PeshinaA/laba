@@ -6,13 +6,13 @@ void rremove(cosmetic * mass, int size, int argc, char* argv[]){
 	string type, color;
 	int price, place;
 	cout<<"Type: "<<endl;
-	scanf("%s", type);
+	getline(cin, type);
 	cout<<"Color: "<<endl;
-	scanf("%s", color);
+	getline(cin, color);
 	cout<<"Price: "<<endl;
-	scanf("%d", &price);
+	cin>>price;
 	cout<<"Place: "<<endl;
-	scanf("%d", &place);
+	cin>>place;
 	int i;
 	
 	ifstream f(argv[1]);
