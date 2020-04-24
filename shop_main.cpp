@@ -5,7 +5,7 @@ int main(int argc, char* argv[]){
 	cout<<" >Enter file name: "<<endl;
 
 	int size = 0;
-	ifstream f(name);
+	ifstream f(argv[1]);
 	if (f.is_open())
 		cout<<"OK"<<endl;
 	else{
