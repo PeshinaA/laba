@@ -1,81 +1,86 @@
 #include "shop_struct.h"
 
-void menu(cosmetic * mass, int size, char name[80]){
-	int number;
-	printf("\n  What do you want to do?\n");
-	printf("[1] Add product.\n");
-	printf("[2] Print all products.\n");
-	printf("[3] Remove product.\n");
-	printf("[4] Find product.\n");
-	printf("[5] Clear file.\n");
-	printf("[6] Exit.\n");
-	printf(">Enter the number: ");
+void menu(cosmetic * mass, int size, int argc, char* argv[]){
 
-	scanf("%d", &number);
+	cout<<"  What do you want to do?"<<endl;
+	cout<<"[1] Add product."<<endl;
+	cout<<"[2] Print all products."<<endl;
+	cout<<"[3] Remove product."<<endl;
+	cout<<"[4] Find product."<<endl;
+	cout<<"[5] Clear file."<<endl;
+	cout<<"[6] Exit."<<endl;
+	cout<<" >Enter the number: "<<endl;
+	
+	int number;
+	cin>>number;
 	switch(number){
 		case 1:
-			add(mass, size, name);
+			add(mass, size, argv[1]);
 			size++;
 			break;
 		case 2:
-			pprint(name);
+			pprint(argv[1]);
 			break;
 		case 3:
-			rremove(mass, size, name);
+			rremove(mass, size, argv[1]);
 			break;
 		case 4:
-			find(name);
+			find(argv[1]);
 			break;
 		case 5:
-			clear(name);
+			clear(argv[1]);
 			break;
 		case 6:
-			printf("  Goodbye.\n");
+			cout<<"  Goodbye."<<endl;
 			exit(0);
 
 		default:
-			printf("\n  Please, enter the number for 1 to 5.\n");
+			cout<<"  Please, enter the number for 1 to 5."<<endl;
 			break;
 	}
 }
 
-void clear(char name[80]){
-	FILE *f = fopen(name, "wb");
-	fclose(f);
+void clear(int argc, char* argv[]){
+	ofstream f(argv[1], ios_base::trunc);
+	f.close();
 }
 
-void add(cosmetic * mass, int size, char name[80]){
-	printf("\n   Please enter information.\n");
+void add(cosmetic * mass, int size, int argc, char* argv[]){
+	cout<<"   Please enter information."<<endl;
 	cosmetic c;
-        printf("Type: ");
+        cout<<"Type: "<<endl;
 	scanf("%s", c.type);
-	printf("Color: ");
+	cout<<"Color: "<<endl;
 	scanf("%s", c.color);
-	printf("Price: ");
+	cout<<"Price: "<<endl;
 	scanf("%d", &c.price);
-	printf("Place: ");
+	cout<<"Place: "<<endl;
 	scanf("%d", &c.place);
 
 	mass[size-1] = c;
-	FILE *bf_in;
-	if (( bf_in = fopen( name, "a+b"))== NULL){
-		printf("  Cannot open file.\n");
-		exit(1);
+	ofstream f(argv[1]);
+	if (f.is_open())
+		cout<<"OK"<<endl;
+	else{
+		cout<<"Cannot open file."<<endl;
+		return 1;
 	}
-
+	
 	fwrite(&mass[size-1], sizeof(cosmetic), 1, bf_in);
-	fclose(bf_in);
-	printf("\n  Product added.\n");
+	f.close();
+	cout<<"  Product added."<<endl;
 }
 
-void pprint(char name[80]){
+void pprint(int argc, char* argv[]){
 	cosmetic c2;
-	FILE *bf_out;
-	if (( bf_out = fopen( name, "r+b"))== NULL){
-		printf("  Cannot open file.\n");
-		exit(1);
+	ifstream f(argv[1]);
+	if (f.is_open())
+		cout<<"OK"<<endl;
+	else{
+		cout<<"Cannot open file."<<endl;
+		return 1;
 	}
-
+	
 	while(!feof(bf_out)){
 		fread(&c2, sizeof(c2), 1, bf_out);
 		printf("\nType: %s\n", c2.type);
@@ -83,5 +88,5 @@ void pprint(char name[80]){
 		printf("Price: %d\n", c2.price);
 		printf("Place: %d\n", c2.place);
 	}
-	fclose(bf_out);
+	f.close();
 }
