@@ -15,20 +15,20 @@ void cosmetic::menu(cosmetic * mass, int size, int argc, char* argv[]){
 	cin>>number;
 	switch(number){
 		case 1:
-			add(mass, size, argv[1]);
+			cosmetic.add(mass, size, argv[1]);
 			size++;
 			break;
 		case 2:
-			pprint(argv[1]);
+			cosmetic.pprint(argv[1]);
 			break;
 		case 3:
-			rremove(mass, size, argv[1]);
+			cosmetic.rremove(mass, size, argv[1]);
 			break;
 		case 4:
-			find(argv[1]);
+			cosmetic.find(argv[1]);
 			break;
 		case 5:
-			clear(argv[1]);
+			cosmetic.clear(argv[1]);
 			break;
 		case 6:
 			cout<<"  Goodbye."<<endl;
@@ -59,9 +59,7 @@ void cosmetic::add(cosmetic * mass, int size, int argc, char* argv[]){
 
 	mass[size-1] = c;
 	ofstream f(argv[1]);
-	if (f.is_open())
-		cout<<"OK"<<endl;
-	else{
+	if (!f.is_open()){
 		cout<<"Cannot open file."<<endl;
 		return 1;
 	}
@@ -74,9 +72,7 @@ void cosmetic::add(cosmetic * mass, int size, int argc, char* argv[]){
 void cosmetic::pprint(int argc, char* argv[]){
 	cosmetic c2;
 	ifstream f(argv[1]);
-	if (f.is_open())
-		cout<<"OK"<<endl;
-	else{
+	if (!f.is_open()){
 		cout<<"Cannot open file."<<endl;
 		return 1;
 	}
