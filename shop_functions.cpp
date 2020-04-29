@@ -1,6 +1,6 @@
 #include "shop_struct.h"
 
-void cosmetic::menu(cosmetic * mass, int size, int argc, char* argv[]){
+void menu(cosmetic mass[], int size, int argc, char* argv[]){
 
 	cout<<"  What do you want to do?"<<endl;
 	cout<<"[1] Add product."<<endl;
@@ -15,20 +15,20 @@ void cosmetic::menu(cosmetic * mass, int size, int argc, char* argv[]){
 	cin>>number;
 	switch(number){
 		case 1:
-			cosmetic.add(mass, size, argv[1]);
+			add(mass, size, argv[1]);
 			size++;
 			break;
 		case 2:
-			cosmetic.pprint(argv[1]);
+			pprint(argv[1]);
 			break;
 		case 3:
-			cosmetic.rremove(mass, size, argv[1]);
+			rremove(mass, size, argv[1]);
 			break;
 		case 4:
-			cosmetic.find(argv[1]);
+			find(argv[1]);
 			break;
 		case 5:
-			cosmetic.clear(argv[1]);
+			clear(argv[1]);
 			break;
 		case 6:
 			cout<<"  Goodbye."<<endl;
@@ -40,12 +40,12 @@ void cosmetic::menu(cosmetic * mass, int size, int argc, char* argv[]){
 	}
 }
 
-void cosmetic::clear(int argc, char* argv[]){
+void clear(int argc, char* argv[]){
 	ofstream f(argv[1], ios_base::trunc);
 	f.close();
 }
 
-void cosmetic::add(cosmetic * mass, int size, int argc, char* argv[]){
+void add(cosmetic * mass, int size, int argc, char* argv[]){
 	cout<<"   Please enter information."<<endl;
 	cosmetic c;
         cout<<"Type: "<<endl;
@@ -69,7 +69,7 @@ void cosmetic::add(cosmetic * mass, int size, int argc, char* argv[]){
 	cout<<"  Product added."<<endl;
 }
 
-void cosmetic::pprint(int argc, char* argv[]){
+void pprint(int argc, char* argv[]){
 	cosmetic c2;
 	ifstream f(argv[1]);
 	if (!f.is_open()){
