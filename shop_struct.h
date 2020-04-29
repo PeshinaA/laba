@@ -3,12 +3,13 @@
 #include <string>
 #include <new>
 using namespace std;
-typedef struct product{
+class cosmetic{
+public:
 	int place;
 	int price;
-	char type[80];
-	char color[80];
-} cosmetic;
+	string type;
+	string color;
+};
 
 void menu();
 void add();
