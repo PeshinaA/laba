@@ -1,6 +1,6 @@
 #include "shop_struct.h"
 
-void cosmetic::find(int argc, char* argv[]){
+void find(int argc, char* argv[]){
 	int n;
 	string s;
 	int p;
