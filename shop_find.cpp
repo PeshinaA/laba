@@ -1,6 +1,6 @@
 #include "shop_struct.h"
 
-void find(int argc, char* argv[]){
+void cosmetic::find(int argc, char* argv[]){
 	int n;
 	string s;
 	int p;
@@ -14,9 +14,7 @@ void find(int argc, char* argv[]){
 	cin>>n;
 	
 	ifstream f(argv[1]);
-	if (f.is_open())
-		cout<<"OK"<<endl;
-	else{
+	if (!f.is_open()){
 		cout<<"Cannot open file."<<endl;
 		return 1;
 	}
