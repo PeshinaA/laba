@@ -1,6 +1,6 @@
 #include "shop_struct.h"
 
-void rremove(cosmetic * mass, int size, int argc, char* argv[]){
+void cosmetic::rremove(cosmetic * mass, int size, int argc, char* argv[]){
 
 	cout<<" >Enter product: "<<endl;
 	string type, color;
