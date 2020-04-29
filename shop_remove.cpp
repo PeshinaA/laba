@@ -16,9 +16,7 @@ void cosmetic::rremove(cosmetic * mass, int size, int argc, char* argv[]){
 	int i;
 	
 	ifstream f(argv[1]);
-	if (f.is_open())
-		cout<<"OK"<<endl;
-	else{
+	if (!f.is_open()){
 		cout<<"Cannot open file."<<endl;
 		return 1;
 	}
@@ -37,9 +35,7 @@ void cosmetic::rremove(cosmetic * mass, int size, int argc, char* argv[]){
 	}
 	if(k != 0){
 		ofstream f(argv[1]);
-		if (f.is_open())
-			cout<<"OK"<<endl;
-		else{
+		if (!f.is_open()){
 			cout<<"Cannot open file."<<endl;
 			return 1;
 		}
