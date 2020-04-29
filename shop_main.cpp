@@ -19,14 +19,14 @@ int main(int argc, char* argv[]){
 	size--;
 	f.close();
 
-	
+	cosmetic * mass = new cosmetic[size];
 
 	int number;
 	do{
 		cosmetic.menu(mass, size, argv[1]);
 	} while (number !=6);
 	
-	free(mass);
+	delete [] mass;
 
 	return 0;
 }
