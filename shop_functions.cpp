@@ -1,6 +1,6 @@
 #include "shop_struct.h"
 
-void menu(cosmetic * mass, int size, int argc, char* argv[]){
+void cosmetic::menu(cosmetic * mass, int size, int argc, char* argv[]){
 
 	cout<<"  What do you want to do?"<<endl;
 	cout<<"[1] Add product."<<endl;
@@ -40,12 +40,12 @@ void menu(cosmetic * mass, int size, int argc, char* argv[]){
 	}
 }
 
-void clear(int argc, char* argv[]){
+void cosmetic::clear(int argc, char* argv[]){
 	ofstream f(argv[1], ios_base::trunc);
 	f.close();
 }
 
-void add(cosmetic * mass, int size, int argc, char* argv[]){
+void cosmetic::add(cosmetic * mass, int size, int argc, char* argv[]){
 	cout<<"   Please enter information."<<endl;
 	cosmetic c;
         cout<<"Type: "<<endl;
@@ -71,7 +71,7 @@ void add(cosmetic * mass, int size, int argc, char* argv[]){
 	cout<<"  Product added."<<endl;
 }
 
-void pprint(int argc, char* argv[]){
+void cosmetic::pprint(int argc, char* argv[]){
 	cosmetic c2;
 	ifstream f(argv[1]);
 	if (f.is_open())
