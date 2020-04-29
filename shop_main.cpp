@@ -6,9 +6,7 @@ int main(int argc, char* argv[]){
 
 	int size = 0;
 	ifstream f(argv[1]);
-	if (f.is_open())
-		cout<<"OK"<<endl;
-	else{
+	if (!f.is_open()){
 		cout<<"Cannot open file."<<endl;
 		return 1;
 	}
@@ -21,11 +19,11 @@ int main(int argc, char* argv[]){
 	size--;
 	f.close();
 
-	cosmetic * mass = (cosmetic*)malloc(sizeof(cosmetic) * size);
+	
 
 	int number;
 	do{
-		menu(mass, size, name);
+		cosmetic.menu(mass, size, argv[1]);
 	} while (number !=6);
 	
 	free(mass);
