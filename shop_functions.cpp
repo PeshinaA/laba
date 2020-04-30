@@ -49,13 +49,13 @@ void add(cosmetic mass[], int size, int argc, char* argv[]){
 	cout<<"   Please enter information."<<endl;
 	cosmetic c;
         cout<<"Type: "<<endl;
-	scanf("%s", c.type);
+	getline(cin, c.type);
 	cout<<"Color: "<<endl;
-	scanf("%s", c.color);
+	getline(cin, c.color);
 	cout<<"Price: "<<endl;
-	scanf("%d", &c.price);
+	cin>>c.price;
 	cout<<"Place: "<<endl;
-	scanf("%d", &c.place);
+	cin>>c.place;
 
 	mass[size-1] = c;
 	ofstream f(argv[1]);
@@ -64,7 +64,7 @@ void add(cosmetic mass[], int size, int argc, char* argv[]){
 		return 1;
 	}
 	
-	fwrite(&mass[size-1], sizeof(cosmetic), 1, bf_in);
+	f.write((cosmetic *)&mass[size-1], sizeof(cosmetic));
 	f.close();
 	cout<<"  Product added."<<endl;
 }
@@ -77,12 +77,8 @@ void pprint(int argc, char* argv[]){
 		return 1;
 	}
 	
-	while(!feof(bf_out)){
-		fread(&c2, sizeof(c2), 1, bf_out);
-		printf("\nType: %s\n", c2.type);
-		printf("Color: %s\n", c2.color);
-		printf("Price: %d\n", c2.price);
-		printf("Place: %d\n", c2.place);
+	while(f.read((cosmetic *)&c2, sizeof(cosmetic))){
+		cout<<"Type: "<<c2.type<<"Color: "<<c2.color<<"Price: "<<c2.price<<"Place: "<<c2.place<<endl;
 	}
 	f.close();
 }
