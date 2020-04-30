@@ -11,12 +11,10 @@ int main(int argc, char* argv[]){
 		return 1;
 	}
 	
-	cosmetic temp;
-	while(!feof(f)){
-		fread(&temp, sizeof(cosmetic), 1, f);
+	cosmetic c;
+	while(f.read((cosmetic *)&c, sizeof(cosmetic))){
 		size++;
 	}
-	size--;
 	f.close();
 
 	cosmetic * mass = new cosmetic[size];
