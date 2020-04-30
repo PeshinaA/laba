@@ -9,12 +9,11 @@ public:
 	int price;
 	string type;
 	string color;
-	void menu();
-	void add();
-	void pprint();
-	void clear();
-	void rremove();
-	void find();
 };
-
+void menu();
+void add();
+void pprint();
+void clear();
+void rremove();
+void find();
 
