@@ -21,9 +21,10 @@ void rremove(cosmetic mass[], int size, int argc, char* argv[]){
 		return 1;
 	}
 	
-	while(!feof(f))
+	cosmetic c3;
+	while(f.read((cosmetic *)&c3, sizeof(cosmetic))
 		for(i = size-1; i >= 0; i--)
-			fread(&mass[i], sizeof(cosmetic), 1, f);
+			f.read((cosmetic *)&mass[i], sizeof(cosmetic));
 	f.close();
 
 	int rm_i, k = 0;
@@ -34,7 +35,7 @@ void rremove(cosmetic mass[], int size, int argc, char* argv[]){
 		}
 	}
 	if(k != 0){
-		ofstream f(argv[1]);
+		ofstream newf(argv[1], ios::trunc);
 		if (!f.is_open()){
 			cout<<"Cannot open file."<<endl;
 			return 1;
@@ -42,7 +43,7 @@ void rremove(cosmetic mass[], int size, int argc, char* argv[]){
 		
 		for(i = size-1; i >=0; i--){
 			if (i != rm_i)
-				fwrite(&mass[i], sizeof(cosmetic), 1, newf);
+				newf.write((cosmetic *)&mass[i], sizeof(cosmetic));
 			}
 		f.close();
 		size--;
