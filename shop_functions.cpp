@@ -45,7 +45,7 @@ void clear(int argc, char* argv[]){
 	f.close();
 }
 
-void add(cosmetic * mass, int size, int argc, char* argv[]){
+void add(cosmetic mass[], int size, int argc, char* argv[]){
 	cout<<"   Please enter information."<<endl;
 	cosmetic c;
         cout<<"Type: "<<endl;
