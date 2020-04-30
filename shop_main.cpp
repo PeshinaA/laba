@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
 
 	int number;
 	do{
-		cosmetic.menu(mass, size, argv[1]);
+		menu(mass, size, argv[1]);
 	} while (number !=6);
 	
 	delete [] mass;
