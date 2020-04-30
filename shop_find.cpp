@@ -22,14 +22,10 @@ void find(int argc, char* argv[]){
 	if (n == 1){
 		cout<<"\n>Enter type: "<<endl;
 		getline(cin, s);
-		while(!feof(f)){
-			fread(&c1, sizeof(c1), 1, f);
+		while(f.read((cosmetic *)&c1, sizeof(cosmetic))){
 			if (strcmp( s, c1.type)== 0) {
 				k++;
-				printf("\nType: %s\n", c1.type);
-				printf("Color: %s \n", c1.color);
-				printf("Price: %d\n", c1.price);
-				printf("Place: %d\n", c1.place);
+				cout<<"Type: "<<c1.type<<"Color: "<<c1.color<<"Price: "<<c1.price<<"Place: "<<c1.place<<endl;
 			}
 		}
 		if (k == 0)
@@ -37,14 +33,10 @@ void find(int argc, char* argv[]){
 	}else if (n == 2){
 		cout<<" >Enter color: "<<endl;
 		getline(cin, s);
-		while(!feof(f)){
-			fread(&c1, sizeof(c1), 1, f);
+		while(f.read((cosmetic *)&c1, sizeof(cosmetic))){
 			if (strcmp( s, c1.color)== 0) {
 				k++;
-				printf("\nType: %s\n", c1.type);
-				printf("Color: %s \n", c1.color);
-				printf("Price: %d\n", c1.price);
-				printf("Place: %d\n", c1.place);
+				cout<<"Type: "<<c1.type<<"Color: "<<c1.color<<"Price: "<<c1.price<<"Place: "<<c1.place<<endl;
 			}
 		}
 		if (k == 0)
@@ -52,14 +44,10 @@ void find(int argc, char* argv[]){
 	}else if (n == 3){
 		cout<<" >Enter price: "<<endl;
 		cin>>p;
-		while(!feof(f)){
-			fread(&c1, sizeof(c1), 1, f);
+		while(f.read((cosmetic *)&c1, sizeof(cosmetic))){
 			if (c1.price == p) {
 				k++;
-				printf("\nType: %s\n", c1.type);
-				printf("Color: %s \n", c1.color);
-				printf("Price: %d\n", c1.price);
-				printf("Place: %d\n", c1.place);
+				cout<<"Type: "<<c1.type<<"Color: "<<c1.color<<"Price: "<<c1.price<<"Place: "<<c1.place<<endl;
 			}
 		}
 		if (k == 0)
@@ -67,14 +55,10 @@ void find(int argc, char* argv[]){
 	}else if (n == 4){
 		cout<<" >Enter place: "<<endl;
 		cin>>p;
-		while(!feof(f)){
-			fread(&c1, sizeof(c1), 1, f);
+		while(f.read((cosmetic *)&c1, sizeof(cosmetic))){
 			if (c1.place == p) {
 				k++;
-				printf("\nType: %s\n", c1.type);
-				printf("Color: %s \n", c1.color);
-				printf("Price: %d\n", c1.price);
-				printf("Place: %d\n", c1.place);
+				cout<<"Type: "<<c1.type<<"Color: "<<c1.color<<"Price: "<<c1.price<<"Place: "<<c1.place<<endl;
 			}
 		}
 		if (k == 0)
