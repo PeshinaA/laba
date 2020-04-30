@@ -5,6 +5,7 @@
 using namespace std;
 class cosmetic{
 public:
+	cosmetic()
 	int place;
 	int price;
 	string type;
